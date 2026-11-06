@@ -192,6 +192,18 @@
   footer .views-row{display:flex;align-items:center;gap:7px;color:var(--dim)}
   footer .views-row svg{width:18px;height:18px;display:block}
   footer .views-row .vc-num{font-size:13.5px;font-weight:500;letter-spacing:.03em}
+  .coffee-btn{display:inline-flex;align-items:center;gap:8px;background:#c8f542;color:#0a0a0f;border:none;border-radius:999px;padding:12px 22px;font-size:16px;font-weight:700;cursor:pointer}
+  .coffee-btn:hover{filter:brightness(1.08)}
+  .coffee-overlay{position:fixed;inset:0;background:rgba(0,0,0,.65);display:none;align-items:flex-end;justify-content:center;z-index:50}
+  .coffee-overlay.open{display:flex}
+  .coffee-popup{background:#12121a;border:1px solid #26262f;border-radius:24px 24px 0 0;width:100%;max-width:520px;padding:28px 24px 32px;position:relative;text-align:left}
+  .coffee-popup h2{font-size:24px;font-weight:800;margin-bottom:8px;color:#f2f0ea}
+  .coffee-popup p{color:#9a97a8;font-size:16px;line-height:1.5;margin-bottom:24px}
+  .coffee-popup .coffee-close{position:absolute;top:16px;right:16px;background:none;border:none;color:#9a97a8;font-size:26px;cursor:pointer;line-height:1}
+  .coffee-upi{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;background:#f2f0ea;color:#0a0a0f;border-radius:999px;padding:15px;font-size:17px;font-weight:700;cursor:pointer;margin-bottom:12px;text-decoration:none}
+  .coffee-buy{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;background:#c8f542;color:#0a0a0f;border-radius:999px;padding:15px;font-size:17px;font-weight:700;cursor:pointer;text-decoration:none}
+  .coffee-upi svg{width:22px;height:22px;flex-shrink:0;display:block}
+  @media(min-width:560px){.coffee-popup{border-radius:24px;margin-bottom:40px}.coffee-overlay{align-items:center}}
 
   /* Theme toggle + light (day) theme */
   .theme-toggle{display:inline-flex;align-items:center;justify-content:center;width:40px;height:40px;border-radius:999px;border:1px solid var(--line);background:var(--card,#12121a);color:var(--ink);cursor:pointer;transition:.25s;padding:0;flex:none}
@@ -491,6 +503,7 @@
 
 <footer>
   <span class="views-row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg><span class="vc-num">50,000</span></span>
+  <button class="coffee-btn" onclick="document.getElementById('coffeeOv').classList.add('open')">☕ Buy me a coffee</button>
   <span>© 2026 Deepak Deon</span>
 </footer>
 <script>
@@ -808,5 +821,14 @@ row.addEventListener('pointerleave',function(){endHold();});
 row.addEventListener('contextmenu',function(e){e.preventDefault();});
 })();
 </script>
+<div class="coffee-overlay" id="coffeeOv" onclick="if(event.target===this) this.classList.remove('open')">
+  <div class="coffee-popup">
+    <button class="coffee-close" onclick="document.getElementById('coffeeOv').classList.remove('open')">&times;</button>
+    <h2>Enjoying my work?</h2>
+    <p>Everything here is free. Your tips keep it going.</p>
+    <a class="coffee-upi" href="upi://pay?pa=deepakdeon@ptyes&amp;pn=DeonWrites&amp;cu=INR&amp;tn=DeonWrites%20Support"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#4285F4" d="M23.49 12.27c0-.79-.07-1.54-.19-2.27H12v4.51h6.47c-.29 1.48-1.14 2.73-2.4 3.58v3h3.86c2.26-2.09 3.56-5.17 3.56-8.82z"/><path fill="#34A853" d="M12 24c3.24 0 5.95-1.08 7.93-2.91l-3.86-3c-1.08.72-2.45 1.16-4.07 1.16-3.13 0-5.78-2.11-6.73-4.96H1.29v3.09C3.26 21.3 7.31 24 12 24z"/><path fill="#FBBC05" d="M5.27 14.29c-.25-.72-.38-1.49-.38-2.29s.14-1.57.38-2.29V6.62H1.29C.47 8.24 0 10.06 0 12s.47 3.76 1.29 5.38l3.98-3.09z"/><path fill="#EA4335" d="M12 4.75c1.77 0 3.35.61 4.6 1.8l3.42-3.42C17.95 1.19 15.24 0 12 0 7.31 0 3.26 2.7 1.29 6.62l3.98 3.09C6.22 6.86 8.87 4.75 12 4.75z"/></svg> Pay by UPI</a>
+    <a class="coffee-buy" href="upi://pay?pa=deepakdeon@ptyes&amp;pn=DeonWrites&amp;cu=INR&amp;tn=DeonWrites%20Support">☕ Buy a coffee</a>
+  </div>
+</div>
 </body>
 </html>
