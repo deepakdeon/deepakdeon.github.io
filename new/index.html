@@ -10,8 +10,8 @@
 <meta name="theme-color" content="#0a0a0f" />
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;800;900&family=Space+Grotesk:wght@400;500;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet" />
 <style>
-:root{--bg:#0a0a0f;--bg2:#101018;--ink:#f2f0ea;--dim:#9a97a8;--lime:#c8f542;--violet:#8b7bff;--pink:#ff7ad9;--line:#26262f;--card:#12121a}
-html[data-theme="light"]{--bg:#f7f6f1;--bg2:#efeee7;--ink:#17171d;--dim:#5f5f6a;--line:#ddd9cd;--card:#ffffff;--lime:#79a400;--violet:#6a54e8;--pink:#e84fc0}
+:root{--bg:#0a0a0f;--bg2:#101018;--ink:#f2f0ea;--dim:#9a97a8;--lime:#c8f542;--lime-rgb:200,245,66;--violet:#8b7bff;--pink:#ff7ad9;--line:#26262f;--card:#12121a}
+html[data-theme="light"]{--bg:#f7f6f1;--bg2:#efeee7;--ink:#17171d;--dim:#5f5f6a;--line:#ddd9cd;--card:#ffffff;--lime:#79a400;--lime-rgb:121,164,0;--violet:#6a54e8;--pink:#e84fc0}
 html[data-theme="light"] .post{color:#2a2822}
 *{margin:0;padding:0;box-sizing:border-box}
 body{background:var(--bg);color:var(--ink);font-family:'Space Grotesk',system-ui,sans-serif;overflow-x:hidden}
@@ -29,7 +29,7 @@ h1.title{font-family:'Archivo',sans-serif;font-weight:800;font-size:32px;line-he
 .upd-list li a{color:#5ea8ff;text-decoration:underline}
 .lg-ic{width:17px;height:17px;vertical-align:-3px;margin-right:6px}
 .upd-sub{color:var(--dim)}
-.pill{display:inline-block;padding:5px 14px;border-radius:99px;background:rgba(255,212,0,.18);border:1px solid rgba(255,212,0,.5);color:var(--ink);font-size:15px;font-weight:600}
+.pill{display:inline-block;padding:5px 14px;border-radius:99px;background:rgba(var(--lime-rgb),.18);border:1px solid rgba(var(--lime-rgb),.5);color:var(--ink);font-size:15px;font-weight:600}
 .upd-list li a.pill-link{display:inline-block;padding:5px 14px;border-radius:99px;background:var(--card);border:1px solid var(--line);color:#5ea8ff;font-size:15px;font-weight:600;text-decoration:none;margin:0 6px 6px 0}
 .cmt{margin:34px 0 6px;padding:22px 20px;border:1px solid var(--line);border-radius:16px;background:var(--card)}
 .cmt h2{font-size:20px;margin:0 0 6px;color:var(--ink)}
