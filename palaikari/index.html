@@ -525,6 +525,8 @@ footer b{color:#fff}
     var list=getBookings().filter(function(b){return b&&b.ref});
     if(!list.length)return;
     $("lb-cards").innerHTML=list.map(cardHtml).join("");
+    /* card labels are injected after the page-load snapshot, so save their Malayalam text now */
+    $("lb-cards").querySelectorAll("[data-en]").forEach(function(e){e.dataset.ml=e.innerHTML});
     if(lang==="en")setLang("en");
     $("lastbooking").classList.remove("hide");
     $("s1").classList.add("hide");
