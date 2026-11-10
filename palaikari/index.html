@@ -100,6 +100,22 @@ h2{font-family:var(--serif);font-size:clamp(26px,4.4vw,38px);color:var(--deep);l
 .plate h3{font-size:18px;color:var(--deep)}
 .plate p{font-size:15px;color:var(--mute);line-height:1.5}
 @media(max-width:720px){.plates{grid-template-columns:1fr 1fr;gap:26px 12px}}
+/* included — activity popup (tap a round plate) */
+.plate{cursor:pointer}
+.plate img{transition:transform .25s ease,box-shadow .25s ease}
+.plate:hover img,.plate:focus-visible img{transform:scale(1.06);box-shadow:0 10px 22px -8px rgba(10,37,64,.45)}
+.plate:focus-visible{outline:none}
+.plate:focus-visible img{outline:2px solid var(--lake);outline-offset:2px}
+.act-modal{position:fixed;inset:0;z-index:60;display:flex;align-items:center;justify-content:center;padding:18px;background:rgba(10,37,64,.55);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);opacity:0;visibility:hidden;pointer-events:none;transition:opacity .25s ease,visibility 0s linear .25s}
+.act-modal.open{opacity:1;visibility:visible;pointer-events:auto;transition:opacity .25s ease}
+.act-card{position:relative;width:min(440px,100%);max-height:calc(100vh - 36px);overflow:auto;background:#fff;border-radius:20px;box-shadow:0 24px 60px -18px rgba(10,37,64,.55);transform:translateY(10px) scale(.97);transition:transform .25s ease}
+.act-modal.open .act-card{transform:none}
+.act-card>img{display:block;width:100%;aspect-ratio:1/1;object-fit:cover}
+.act-body{padding:20px 22px 24px;text-align:center}
+.act-body h3{font-size:22px;color:var(--deep);margin-bottom:8px}
+.act-body p{font-size:15.5px;color:var(--mute);line-height:1.65}
+.act-x{position:absolute;top:12px;right:12px;width:36px;height:36px;padding:0;border:0;border-radius:50%;background:rgba(255,255,255,.94);color:var(--deep);font-size:22px;line-height:1;cursor:pointer;box-shadow:0 2px 10px rgba(10,37,64,.3)}
+@media(max-width:440px){.act-body{padding:16px 18px 20px}.act-body h3{font-size:20px}}
 
 /* tickets */
 .tickets{display:grid;grid-template-columns:1fr 1fr;gap:22px}
@@ -255,12 +271,48 @@ footer b{color:#fff}
   <h2 data-en="Included with the Full Day ticket">Full Day ടിക്കറ്റിൽ ഉൾപ്പെടുന്നത്</h2>
   <p class="sub" data-en="All four come free with every Full Day ticket.">ഈ നാലും ടിക്കറ്റിനൊപ്പം ഫ്രീ ആയി ലഭിക്കും.</p>
   <div class="plates">
-    <div class="plate reveal"><img src="assets/meal.jpg" alt="മീൻ കറി ഊണ്"><h3 data-en="Fish curry meals">മീൻ കറി ഊണ്</h3><p data-en="Rice, fish curry and fried fish, made with the farm's fresh fish.">ഫാമിലെ ഫ്രഷ് മീൻ കറി, മീൻ വറുത്തത് എന്നിവയോടെ</p></div>
-    <div class="plate reveal d1"><img src="assets/pedal-boat.jpg" alt="പെഡൽ ബോട്ടിങ്"><h3 data-en="Pedal boating">പെഡൽ ബോട്ടിങ്</h3><p data-en="One round on the lake in a pedal boat.">തടാകത്തിൽ പെഡൽ ബോട്ടിൽ ഒരു റൗണ്ട്.</p></div>
-    <div class="plate reveal d2"><img src="assets/rowing-boat.jpg" alt="തുഴയുന്ന വഞ്ചി"><h3 data-en="Rowing boat">തുഴയുന്ന വഞ്ചി</h3><p data-en="Row out on a traditional boat.">പരമ്പരാഗത വഞ്ചിയിൽ തുഴഞ്ഞ് പോകാം.</p></div>
-    <div class="plate reveal d3"><img src="assets/fishing.jpg" alt="ചൂണ്ട"><h3 data-en="Angling">ചൂണ്ട</h3><p data-en="Sit on the backwaters shore and fish.">കായൽക്കരയിൽ ഇരുന്ന് ചൂണ്ടയിടാം.</p></div>
+    <div class="plate reveal" data-act="meals" tabindex="0" role="button"><img src="assets/meal.jpg" alt="മീൻ കറി ഊണ്"><h3 data-en="Fish curry meals">മീൻ കറി ഊണ്</h3><p data-en="Rice, fish curry and fried fish, made with the farm's fresh fish.">ഫാമിലെ ഫ്രഷ് മീൻ കറി, മീൻ വറുത്തത് എന്നിവയോടെ</p></div>
+    <div class="plate reveal d1" data-act="pedal" tabindex="0" role="button"><img src="assets/pedal-boat.jpg" alt="പെഡൽ ബോട്ടിങ്"><h3 data-en="Pedal boating">പെഡൽ ബോട്ടിങ്</h3><p data-en="One round on the lake in a pedal boat.">തടാകത്തിൽ പെഡൽ ബോട്ടിൽ ഒരു റൗണ്ട്.</p></div>
+    <div class="plate reveal d2" data-act="rowing" tabindex="0" role="button"><img src="assets/rowing-boat.jpg" alt="തുഴയുന്ന വഞ്ചി"><h3 data-en="Rowing boat">തുഴയുന്ന വഞ്ചി</h3><p data-en="Row out on a traditional boat.">പരമ്പരാഗത വഞ്ചിയിൽ തുഴഞ്ഞ് പോകാം.</p></div>
+    <div class="plate reveal d3" data-act="angling" tabindex="0" role="button"><img src="assets/fishing.jpg" alt="ചൂണ്ട"><h3 data-en="Angling">ചൂണ്ട</h3><p data-en="Sit on the backwaters shore and fish.">കായൽക്കരയിൽ ഇരുന്ന് ചൂണ്ടയിടാം.</p></div>
   </div>
 </section>
+
+<!-- activity popup: one dialog, filled from INCL below (image, title, description — easy to replace) -->
+<div class="act-modal" id="act-modal" role="dialog" aria-modal="true" aria-labelledby="act-title">
+  <div class="act-card">
+    <button class="act-x" type="button" id="act-x" aria-label="Close">&times;</button>
+    <img id="act-img" src="assets/meal.jpg" alt="Traditional Kerala Meals">
+    <div class="act-body"><h3 id="act-title">Traditional Kerala Meals</h3><p id="act-desc">Enjoy a traditional Kerala-style meal with rice, fish curry, and fried fish as the standard meal. Special seafood dishes such as Karimeen, prawns, and clams are also available on request.</p></div>
+  </div>
+</div>
+<script>
+(function(){
+  /* popup content — to change an activity, edit its image, title or description here */
+  var INCL={
+    meals:{img:'assets/meal.jpg',title:'Traditional Kerala Meals',desc:'Enjoy a traditional Kerala-style meal with rice, fish curry, and fried fish as the standard meal. Special seafood dishes such as Karimeen, prawns, and clams are also available on request.'},
+    pedal:{img:'assets/pedal-boat.jpg',title:'Pedal Boating',desc:'Enjoy a relaxing pedal boat ride on the pond inside the farm. Our covered pedal boats can accommodate up to four people, and life jackets are provided for a safe and comfortable experience.'},
+    rowing:{img:'assets/rowing-boat.jpg',title:'Traditional Rowing Boat',desc:'Experience a traditional rowing boat ride on the pond, featuring two small boats joined together to form a stable and comfortable ride. Life jackets are provided for a safe and enjoyable experience.'},
+    angling:{img:'assets/fishing.jpg',title:'Angling',desc:'A fun activity for both children and adults, fishing with a rod is a great way to enjoy a relaxing time at the farm. Fishing rods are available at the farm, and the fish you catch can be purchased at an additional cost.'}
+  };
+  var modal=document.getElementById('act-modal'),img=document.getElementById('act-img'),
+      title=document.getElementById('act-title'),desc=document.getElementById('act-desc');
+  function openAct(key){
+    var a=INCL[key];if(!a)return;
+    img.src=a.img;img.alt=a.title;title.textContent=a.title;desc.textContent=a.desc;
+    modal.classList.add('open');document.body.style.overflow='hidden';
+    document.getElementById('act-x').focus();
+  }
+  function closeAct(){modal.classList.remove('open');document.body.style.overflow='';}
+  document.querySelectorAll('.plate[data-act]').forEach(function(el){
+    el.addEventListener('click',function(){openAct(el.getAttribute('data-act'))});
+    el.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();openAct(el.getAttribute('data-act'))}});
+  });
+  document.getElementById('act-x').addEventListener('click',closeAct);
+  modal.addEventListener('click',function(e){if(e.target===modal)closeAct()});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape'&&modal.classList.contains('open'))closeAct()});
+})();
+</script>
 
 <section class="wrap reveal" id="tickets">
   <h2 data-en="Ticket rates">ടിക്കറ്റ് നിരക്കുകൾ</h2>
