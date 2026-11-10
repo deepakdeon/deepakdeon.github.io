@@ -63,7 +63,7 @@ input[type=text],input[type=tel],input[type=date]{transition:border-color .25s e
 .lang button{border:0;background:none;color:#cfe0f2;font:600 13px var(--sans);padding:5px 12px;border-radius:99px;cursor:pointer}
 .lang button[aria-pressed=true]{background:#fff;color:var(--deep)}
 .cta{background:var(--sun);color:#ffffff;font:700 15px var(--sans);border:0;border-radius:99px;padding:9px 18px;text-decoration:none;cursor:pointer;display:inline-block}
-.mapbtn{display:inline-flex;align-items:center;gap:9px;background:#fff;color:var(--deep);border:1.5px solid var(--line);border-radius:99px;padding:11px 22px;font:700 15.5px var(--sans);text-decoration:none;box-shadow:0 2px 8px rgba(10,37,64,.08)}
+.mapbtn{display:flex;width:max-content;margin:0 auto;align-items:center;gap:9px;background:#fff;color:var(--deep);border:1.5px solid var(--line);border-radius:99px;padding:11px 22px;font:700 15.5px var(--sans);text-decoration:none;box-shadow:0 2px 8px rgba(10,37,64,.08)}
 .mapbtn:hover{border-color:var(--lake)}
 .mapbtn svg{flex:none;width:20px;height:20px}
 .cta:hover{background:#3b82f6}
@@ -121,7 +121,7 @@ h2{font-family:var(--serif);font-size:clamp(26px,4.4vw,38px);color:var(--deep);l
 .act-body{padding:20px 22px 24px;text-align:center}
 .act-body h3{font-family:var(--sans);font-size:22px;color:var(--deep);margin-bottom:8px}
 .act-body p{font-size:15.5px;color:var(--mute);line-height:1.65}
-.act-x{position:absolute;top:12px;right:12px;width:36px;height:36px;padding:0;border:0;border-radius:50%;background:rgba(255,255,255,.94);color:var(--deep);font-size:22px;line-height:1;cursor:pointer;box-shadow:0 2px 10px rgba(10,37,64,.3)}
+.act-x{position:absolute;top:12px;right:12px;z-index:3;width:36px;height:36px;padding:0;border:0;border-radius:50%;background:rgba(255,255,255,.94);color:var(--deep);font-size:22px;line-height:1;cursor:pointer;box-shadow:0 2px 10px rgba(10,37,64,.3)}
 @media(max-width:720px){.act-modal{padding:24px}.act-card{width:min(340px,100%)}}
 @media(max-width:440px){.act-body{padding:16px 18px 20px}.act-body h3{font-size:20px}}
 
@@ -208,7 +208,8 @@ input:focus{outline:3px solid #9db9d9;border-color:var(--lake)}
 .nums a{display:block;text-decoration:none;border:1.5px solid var(--line);border-radius:12px;padding:10px 4px;background:#fff;text-align:center}
 .nums a:hover{border-color:var(--lake)}
 .nums b{display:block;font-size:clamp(12px,3.6vw,20px);color:var(--deep);white-space:nowrap}
-.nums span{display:block;font-size:11px;color:var(--mute);margin-top:2px}
+.nums b::after{content:"";display:block;width:34px;height:2px;background:var(--line);margin:8px auto 0;border-radius:2px}
+.nums span{display:block;font-size:11px;color:var(--mute);margin-top:8px}
 /* last booking card (shown only when a booking was saved on this phone) */
 .lastbook{position:relative;background:#fff;border:2px solid var(--sun);border-radius:16px;box-shadow:0 0 0 4px rgba(37,99,235,.20),0 18px 40px -18px rgba(10,37,64,.55);padding:20px 22px;margin:0 0 22px}
 .lastbook h2{margin:0 0 8px;color:var(--deep)}
