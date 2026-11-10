@@ -56,9 +56,10 @@
 
   /* ---------- Hero ---------- */
   header{min-height:100svh;display:flex;flex-direction:column;justify-content:center;padding:110px clamp(18px,6vw,72px) 40px;position:relative}
+  @media(min-width:1024px){header{padding-top:76px}}
 
   .hello{font-family:'JetBrains Mono',monospace;color:var(--lime);font-size:clamp(14px,2vw,18px);letter-spacing:.15em;margin-bottom:14px}
-  h1{font-family:'Archivo',sans-serif;font-weight:900;line-height:.94;text-transform:uppercase;font-size:clamp(52px,12.5vw,168px);letter-spacing:-.01em}
+  h1{font-family:'Archivo',sans-serif;font-weight:900;line-height:.94;text-transform:uppercase;font-size:clamp(52px,12.5vw,112px);letter-spacing:-.01em}
   h1 .row{display:block;overflow:hidden}
   h1 .row span{display:inline-block;transform:translateY(110%);animation:rise 1s cubic-bezier(.22,1,.36,1) forwards}
   h1 .row:nth-child(2) span{animation-delay:.12s;color:transparent;-webkit-text-stroke:2px var(--ink)}
@@ -80,7 +81,7 @@
   .hero-sub{margin-top:26px;font-size:clamp(17px,2.6vw,26px);color:var(--dim);max-width:640px;line-height:1.5}
   .hero-sub b{color:var(--ink)}
   .rotator{display:block;width:max-content;max-width:100%;color:var(--lime);font-weight:700;border-bottom:3px solid var(--violet);font-size:1.3em;line-height:1.25;margin:2px 0 8px}
-  .hero-cta{margin-top:36px;display:flex;gap:14px;flex-wrap:wrap}
+  .hero-cta{margin-top:28px;display:flex;gap:14px;flex-wrap:wrap}
   .btn{display:inline-block;padding:14px 28px;border-radius:99px;font-weight:700;font-size:15px;border:2px solid var(--ink);transition:.25s}
   .btn.solid{background:transparent;border-color:var(--lime);color:var(--ink)}
   .btn:hover{transform:translateY(-3px)}
@@ -593,7 +594,7 @@ document.querySelectorAll('.theme-toggle').forEach(function(b){b.addEventListene
     track.innerHTML += track.innerHTML; // duplicate the set so the loop wraps seamlessly
     track.querySelectorAll('img').forEach(function(im){ im.draggable = false; });
     var half = 0, off = 0, SPEED = 0.6; // auto-slide px per frame
-    var dragging = false, hovering = false, startX = 0, startOff = 0, moved = 0, lastDragEnd = 0;
+    var dragging = false, hovering = false, startX = 0, startOff = 0, moved = 0, lastDragEnd = 0, captured = false;
     var vel = 0, samples = [], lastT = 0; // fling velocity, px per ms
     var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     function measure(){ half = track.scrollWidth / 2; }
@@ -622,12 +623,12 @@ document.querySelectorAll('.theme-toggle').forEach(function(b){b.addEventListene
     wrap.addEventListener('pointerdown', function(e){
       dragging = true; vel = 0; samples = []; moved = 0; startX = e.clientX; startOff = off;
       wrap.classList.add('dragging');
-      try { wrap.setPointerCapture(e.pointerId); } catch (err) {}
     });
     wrap.addEventListener('pointermove', function(e){
       if (!dragging) return;
       var dx = e.clientX - startX;
       if (Math.abs(dx) > moved) moved = Math.abs(dx);
+      if (Math.abs(dx) > 8 && !captured) { captured = true; try { wrap.setPointerCapture(e.pointerId); } catch (err) {} }
       off = startOff + dx; wrapOff(); render();
       var t = performance.now();
       samples.push({ x: e.clientX, t: t });
@@ -635,7 +636,7 @@ document.querySelectorAll('.theme-toggle').forEach(function(b){b.addEventListene
     });
     function endDrag(){
       if (!dragging) return;
-      dragging = false; lastDragEnd = Date.now();
+      dragging = false; captured = false; lastDragEnd = Date.now();
       wrap.classList.remove('dragging');
       // flick velocity from the last ~120ms of the drag
       if (samples.length > 1) {
@@ -831,6 +832,6 @@ row.addEventListener('contextmenu',function(e){e.preventDefault();});
     <a class="coffee-buy" href="https://www.buymeacoffee.com/deepakdeon" target="_blank" rel="noopener">☕ Buy me a coffee</a>
   </div>
 </div>
-<script>window.addEventListener('scroll',function(){var o=document.getElementById('coffeeOv');if(o)o.classList.remove('open')},{passive:true});</script>
+<script>function hideCoffee(){var o=document.getElementById('coffeeOv');if(o)o.classList.remove('open')}window.addEventListener('scroll',hideCoffee,{passive:true});window.addEventListener('wheel',hideCoffee,{passive:true});window.addEventListener('touchmove',hideCoffee,{passive:true});</script>
 </body>
 </html>
