@@ -115,6 +115,7 @@ h2{font-family:var(--serif);font-size:clamp(26px,4.4vw,38px);color:var(--deep);l
 .act-body h3{font-size:22px;color:var(--deep);margin-bottom:8px}
 .act-body p{font-size:15.5px;color:var(--mute);line-height:1.65}
 .act-x{position:absolute;top:12px;right:12px;width:36px;height:36px;padding:0;border:0;border-radius:50%;background:rgba(255,255,255,.94);color:var(--deep);font-size:22px;line-height:1;cursor:pointer;box-shadow:0 2px 10px rgba(10,37,64,.3)}
+@media(max-width:720px){.act-modal{padding:24px}.act-card{width:min(340px,100%)}}
 @media(max-width:440px){.act-body{padding:16px 18px 20px}.act-body h3{font-size:20px}}
 
 /* tickets */
@@ -282,24 +283,35 @@ footer b{color:#fff}
 <div class="act-modal" id="act-modal" role="dialog" aria-modal="true" aria-labelledby="act-title">
   <div class="act-card">
     <button class="act-x" type="button" id="act-x" aria-label="Close">&times;</button>
-    <img id="act-img" src="assets/meal.jpg" alt="Traditional Kerala Meals">
-    <div class="act-body"><h3 id="act-title">Traditional Kerala Meals</h3><p id="act-desc">Enjoy a traditional Kerala-style meal with rice, fish curry, and fried fish as the standard meal. Special seafood dishes such as Karimeen, prawns, and clams are also available on request.</p></div>
+    <img id="act-img" src="assets/meal.jpg" alt="പരമ്പരാഗത കേരള ഊണ്">
+    <div class="act-body"><h3 id="act-title">പരമ്പരാഗത കേരള ഊണ്</h3><p id="act-desc">ചോറ്, മീൻ കറി, മീൻ വറുത്തത് എന്നിവയാണ് സാധാരണ ഊണ്. കരിമീൻ, ചെമ്മീൻ, കക്ക തുടങ്ങിയ പ്രത്യേക കടൽ വിഭവങ്ങളും ആവശ്യമെങ്കിൽ ലഭ്യമാണ്.</p></div>
   </div>
 </div>
 <script>
 (function(){
   /* popup content — to change an activity, edit its image, title or description here */
+  /* popup content — English and Malayalam; to change an activity, edit its image, title or description here */
   var INCL={
-    meals:{img:'assets/meal.jpg',title:'Traditional Kerala Meals',desc:'Enjoy a traditional Kerala-style meal with rice, fish curry, and fried fish as the standard meal. Special seafood dishes such as Karimeen, prawns, and clams are also available on request.'},
-    pedal:{img:'assets/pedal-boat.jpg',title:'Pedal Boating',desc:'Enjoy a relaxing pedal boat ride on the pond inside the farm. Our covered pedal boats can accommodate up to four people, and life jackets are provided for a safe and comfortable experience.'},
-    rowing:{img:'assets/rowing-boat.jpg',title:'Traditional Rowing Boat',desc:'Experience a traditional rowing boat ride on the pond, featuring two small boats joined together to form a stable and comfortable ride. Life jackets are provided for a safe and enjoyable experience.'},
-    angling:{img:'assets/fishing.jpg',title:'Angling',desc:'A fun activity for both children and adults, fishing with a rod is a great way to enjoy a relaxing time at the farm. Fishing rods are available at the farm, and the fish you catch can be purchased at an additional cost.'}
+    meals:{img:'assets/meal.jpg',
+      en:{title:'Traditional Kerala Meals',desc:'Enjoy a traditional Kerala-style meal with rice, fish curry, and fried fish as the standard meal. Special seafood dishes such as Karimeen, prawns, and clams are also available on request.'},
+      ml:{title:'പരമ്പരാഗത കേരళ ഊണ്',desc:'ചോറ്, മീൻ കറി, മീൻ വറുത്തത് എന്നിവയാണ് സാധാരണ ഊണ്. കരിമീൻ, ചെമ്മീൻ, കക്ക തുടങ്ങിയ പ്രത്യേക കടൽ വിഭവങ്ങളും ആവശ്യമെങ്കിൽ ലഭ്യമാണ്.'}},
+    pedal:{img:'assets/pedal-boat.jpg',
+      en:{title:'Pedal Boating',desc:'Enjoy a relaxing pedal boat ride on the pond inside the farm. Our covered pedal boats can accommodate up to four people, and life jackets are provided for a safe and comfortable experience.'},
+      ml:{title:'പെഡൽ ബോട്ടിങ്',desc:'ഫാമിനുള്ളിലെ കുളത്തിൽ പെഡൽ ബോട്ടിൽ ആസ്വാദ്യകരമായ ഒരു യാത്ര. മേൽക്കൂരയുള്ള പെഡൽ ബോട്ടിൽ നാലുപേർക്ക് വരെ കയറാം, സുരക്ഷയ്ക്കായി ലൈഫ് ജാക്കറ്റ് നൽകുന്നു.'}},
+    rowing:{img:'assets/rowing-boat.jpg',
+      en:{title:'Traditional Rowing Boat',desc:'Experience a traditional rowing boat ride on the pond, featuring two small boats joined together to form a stable and comfortable ride. Life jackets are provided for a safe and enjoyable experience.'},
+      ml:{title:'പരമ്പരാഗത തുഴയുന്ന വഞ്ചി',desc:'ഫാമിലെ കുളത്തിൽ പരമ്പരാഗത തുഴയുന്ന വഞ്ചി യാത്ര. രണ്ട് ചെറിയ വഞ്ചികൾ ചേർത്ത് ഉറപ്പുള്ളതും സുഖകരവുമായ യാത്ര ഒരുക്കിയിരിക്കുന്നു. സുരക്ഷയ്ക്കായി ലൈഫ് ജാക്കറ്റ് നൽകുന്നു.'}},
+    angling:{img:'assets/fishing.jpg',
+      en:{title:'Angling',desc:'A fun activity for both children and adults, fishing with a rod is a great way to enjoy a relaxing time at the farm. Fishing rods are available at the farm, and the fish you catch can be purchased at an additional cost.'},
+      ml:{title:'ചൂണ്ട',desc:'കുട്ടികൾക്കും മുതിർന്നവർക്കും ഒരുപോലെ ആസ്വദിക്കാവുന്ന രസകരമായ പ്രവർത്തനമാണ് ചൂണ്ടയിടൽ. ഫാമിൽ ചൂണ്ടകൾ ലഭ്യമാണ്, പിടിക്കുന്ന മീൻ അധിക തുക നൽകി വാങ്ങാം.'}}
   };
   var modal=document.getElementById('act-modal'),img=document.getElementById('act-img'),
       title=document.getElementById('act-title'),desc=document.getElementById('act-desc');
+  function curLang(){return document.documentElement.lang==='en'?'en':'ml';}
   function openAct(key){
     var a=INCL[key];if(!a)return;
-    img.src=a.img;img.alt=a.title;title.textContent=a.title;desc.textContent=a.desc;
+    var t=a[curLang()]||a.en;
+    img.src=a.img;img.alt=t.title;title.textContent=t.title;desc.textContent=t.desc;
     modal.classList.add('open');document.body.style.overflow='hidden';
     document.getElementById('act-x').focus();
   }
@@ -355,7 +367,7 @@ footer b{color:#fff}
   <div class="addons reveal" aria-label="Add-ons">
     <span><span class="aic">🛶</span><span data-en="Kayaking">കയാക്കിങ്</span><b>₹50</b></span>
     <span><span class="aic">🚣</span><span data-en="Coracle boat">കുട്ടവഞ്ചി</span><b>₹50</b></span>
-    <span><span class="aic">🚤</span><span data-en="Speed boat (20 min)">സ്പീഡ് ബോട്ടിങ് (20 മിനിറ്റ്)</span><b>₹150</b></span>
+    <span><span class="aic">🚤</span><span data-en="Motor boat">മോട്ടോർ ബോട്ടിങ്</span><b>₹150</b></span>
   </div>
 </section>
 
@@ -405,7 +417,7 @@ footer b{color:#fff}
         <div class="ctr"><button type="button" data-k="k" data-d="-1" aria-label="−">−</button><output id="k">0</output><button type="button" data-k="k" data-d="1" aria-label="+">+</button></div></div>
       <div class="step"><div><b data-en="Coracle boat">കുട്ടവഞ്ചി</b> <span class="aprice">₹50</span><small data-en="per person">ഒരാൾക്ക്</small></div>
         <div class="ctr"><button type="button" data-k="c" data-d="-1" aria-label="−">−</button><output id="c">0</output><button type="button" data-k="c" data-d="1" aria-label="+">+</button></div></div>
-      <div class="step"><div><b data-en="Speed boat">സ്പീഡ് ബോട്ടിങ്</b> <span class="aprice">₹150</span><small data-en="per person · 20 min">ഒരാൾക്ക് · 20 മിനിറ്റ്</small></div>
+      <div class="step"><div><b data-en="Motor boat">മോട്ടോർ ബോട്ടിങ്</b> <span class="aprice">₹150</span><small data-en="per person · 20 min">ഒരാൾക്ക് · 20 മിനിറ്റ്</small></div>
         <div class="ctr"><button type="button" data-k="s" data-d="-1" aria-label="−">−</button><output id="s">0</output><button type="button" data-k="s" data-d="1" aria-label="+">+</button></div></div>
     </details></div>
 
