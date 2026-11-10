@@ -110,7 +110,14 @@ h2{font-family:var(--serif);font-size:clamp(26px,4.4vw,38px);color:var(--deep);l
 .act-modal.open{opacity:1;visibility:visible;pointer-events:auto;transition:opacity .25s ease}
 .act-card{position:relative;width:min(440px,100%);max-height:calc(100vh - 36px);overflow:auto;background:#fff;border-radius:20px;box-shadow:0 24px 60px -18px rgba(10,37,64,.55);transform:translateY(10px) scale(.97);transition:transform .25s ease}
 .act-modal.open .act-card{transform:none}
-.act-card>img{display:block;width:100%;aspect-ratio:1/1;object-fit:cover}
+.act-gal{position:relative;aspect-ratio:1/1;overflow:hidden;touch-action:pan-y}
+.act-track{display:flex;height:100%;transition:transform .35s ease}
+.act-track img{flex:0 0 100%;width:100%;height:100%;object-fit:cover}
+.act-nav{position:absolute;top:50%;transform:translateY(-50%);width:36px;height:36px;padding:0;border:0;border-radius:50%;background:rgba(255,255,255,.92);color:var(--deep);font-size:22px;line-height:1;cursor:pointer;box-shadow:0 2px 10px rgba(10,37,64,.3);z-index:2}
+.act-prev{left:10px}.act-next{right:10px}
+.act-dots{position:absolute;left:0;right:0;bottom:10px;display:flex;justify-content:center;gap:6px;z-index:2}
+.act-dots button{width:8px;height:8px;padding:0;border:0;border-radius:50%;background:rgba(255,255,255,.65);cursor:pointer;box-shadow:0 1px 4px rgba(10,37,64,.4)}
+.act-dots button.on{background:#fff;width:22px;border-radius:99px}
 .act-body{padding:20px 22px 24px;text-align:center}
 .act-body h3{font-family:var(--sans);font-size:22px;color:var(--deep);margin-bottom:8px}
 .act-body p{font-size:15.5px;color:var(--mute);line-height:1.65}
@@ -283,46 +290,90 @@ footer b{color:#fff}
 <div class="act-modal" id="act-modal" role="dialog" aria-modal="true" aria-labelledby="act-title">
   <div class="act-card">
     <button class="act-x" type="button" id="act-x" aria-label="Close">&times;</button>
-    <img id="act-img" src="assets/meal.jpg" alt="കേരള ഊണ്">
+    <div class="act-gal" id="act-gal">
+      <div class="act-track" id="act-track"><img src="assets/meal.jpg" alt="കേരള ഊണ്"></div>
+      <button class="act-nav act-prev" type="button" id="act-prev" aria-label="Previous photo">&#8249;</button>
+      <button class="act-nav act-next" type="button" id="act-next" aria-label="Next photo">&#8250;</button>
+      <div class="act-dots" id="act-dots"></div>
+    </div>
     <div class="act-body"><h3 id="act-title">കേരള ഊണ്</h3><p id="act-desc">ചോറ്, മീൻ കറി, മീൻ വറുത്തത് എന്നിവയാണ് സാധാരണ ഊണ്. കരിമീൻ, ചെമ്മീൻ, കക്ക തുടങ്ങിയ പ്രത്യേക വിഭവങ്ങളും ആവശ്യമെങ്കിൽ ലഭ്യമാണ്.</p></div>
   </div>
 </div>
 <script>
 (function(){
-  /* popup content — to change an activity, edit its image, title or description here */
-  /* popup content — English and Malayalam; to change an activity, edit its image, title or description here */
+  /* popup content — English and Malayalam; to change an activity, edit its images, title or description here (add a photo by adding its path to the imgs list) */
   var INCL={
-    meals:{img:'assets/meal.jpg',
+    meals:{imgs:['assets/meal.jpg','assets/meal-1.jpg','assets/meal-2.jpg','assets/meal-3.jpg','assets/meal-4.jpg'],
       en:{title:'Traditional Kerala Meals',desc:'Enjoy a traditional Kerala-style meal with rice, fish curry, and fried fish as the standard meal. Special seafood dishes such as Karimeen, prawns, and clams are also available on request.'},
       ml:{title:'കേരള ഊണ്',desc:'ചോറ്, മീൻ കറി, മീൻ വറുത്തത് എന്നിവയാണ് സാധാരണ ഊണ്. കരിമീൻ, ചെമ്മീൻ, കക്ക തുടങ്ങിയ പ്രത്യേക വിഭവങ്ങളും ആവശ്യമെങ്കിൽ ലഭ്യമാണ്.'}},
-    pedal:{img:'assets/pedal-boat.jpg',
+    pedal:{imgs:['assets/pedal-boat.jpg','assets/pedal-1.jpg','assets/pedal-2.jpg','assets/pedal-3.jpg'],
       en:{title:'Pedal Boating',desc:'Enjoy a relaxing pedal boat ride on the lake inside the farm. Our covered pedal boats can accommodate up to four people, and life jackets are provided for a safe and comfortable experience.'},
       ml:{title:'പെഡൽ ബോട്ടിങ്',desc:'ഫാമിനുള്ളിലെ തടാകത്തിൽ പെഡൽ ബോട്ടിൽ ആസ്വാദ്യകരമായ ഒരു യാത്ര. മേൽക്കൂരയുള്ള പെഡൽ ബോട്ടിൽ നാലുപേർക്ക് വരെ കയറാം, സുരക്ഷയ്ക്കായി ലൈഫ് ജാക്കറ്റ് നൽകുന്നു.'}},
-    rowing:{img:'assets/rowing-boat.jpg',
+    rowing:{imgs:['assets/rowing-boat.jpg','assets/rowing-1.jpg','assets/rowing-2.jpg'],
       en:{title:'Traditional Rowing Boat',desc:'Experience a traditional rowing boat ride on the lake, featuring two small boats joined together to form a stable and comfortable ride. Life jackets are provided for a safe and enjoyable experience.'},
       ml:{title:'തുഴയുന്ന വഞ്ചി',desc:'ഫാമിലെ തടാകത്തിൽ തുഴയുന്ന വഞ്ചി യാത്ര. രണ്ട് ചെറിയ വഞ്ചികൾ ചേർത്ത് ഉറപ്പുള്ളതും സുഖകരവുമായ യാത്ര ഒരുക്കിയിരിക്കുന്നു. സുരക്ഷയ്ക്കായി ലൈഫ് ജാക്കറ്റ് നൽകുന്നു.'}},
-    angling:{img:'assets/fishing.jpg',
+    angling:{imgs:['assets/fishing.jpg','assets/angling-1.jpg'],
       en:{title:'Angling',desc:'A fun activity for both children and adults, fishing with a rod is a great way to enjoy a relaxing time at the farm. Fishing rods are available at the farm, and the fish you catch can be purchased at an additional cost.'},
       ml:{title:'ചൂണ്ട',desc:'കുട്ടികൾക്കും മുതിർന്നവർക്കും ഒരുപോലെ ആസ്വദിക്കാവുന്ന രസകരമായ പ്രവർത്തനമാണ് ചൂണ്ടയിടൽ. ഫാമിൽ ചൂണ്ടകൾ ലഭ്യമാണ്, പിടിക്കുന്ന മീൻ വില നൽകി വാങ്ങാം.'}}
   };
-  var modal=document.getElementById('act-modal'),img=document.getElementById('act-img'),
+  var modal=document.getElementById('act-modal'),
+      track=document.getElementById('act-track'),
+      gal=document.getElementById('act-gal'),
+      dots=document.getElementById('act-dots'),
+      prev=document.getElementById('act-prev'),
+      next=document.getElementById('act-next'),
       title=document.getElementById('act-title'),desc=document.getElementById('act-desc');
+  var curImgs=[],slide=0;
   function curLang(){return document.documentElement.lang==='en'?'en':'ml';}
+  function showSlide(i){
+    if(!curImgs.length)return;
+    slide=(i+curImgs.length)%curImgs.length;
+    track.style.transform='translateX(-'+(slide*100)+'%)';
+    var ds=dots.children;
+    for(var j=0;j<ds.length;j++)ds[j].classList.toggle('on',j===slide);
+  }
   function openAct(key){
     var a=INCL[key];if(!a)return;
     var t=a[curLang()]||a.en;
-    img.src=a.img;img.alt=t.title;title.textContent=t.title;desc.textContent=t.desc;
+    curImgs=a.imgs||[a.img];
+    track.innerHTML='';dots.innerHTML='';
+    curImgs.forEach(function(src,i){
+      var im=document.createElement('img');im.src=src;im.alt=t.title;track.appendChild(im);
+      var d=document.createElement('button');d.type='button';
+      d.setAttribute('aria-label','Photo '+(i+1)+' of '+curImgs.length);
+      d.addEventListener('click',function(){showSlide(i)});
+      dots.appendChild(d);
+    });
+    var multi=curImgs.length>1;
+    prev.style.display=multi?'':'none';
+    next.style.display=multi?'':'none';
+    dots.style.display=multi?'':'none';
+    title.textContent=t.title;desc.textContent=t.desc;
+    showSlide(0);
     modal.classList.add('open');document.body.style.overflow='hidden';
     document.getElementById('act-x').focus();
   }
   function closeAct(){modal.classList.remove('open');document.body.style.overflow='';}
+  prev.addEventListener('click',function(){showSlide(slide-1)});
+  next.addEventListener('click',function(){showSlide(slide+1)});
+  var sx=0;
+  gal.addEventListener('touchstart',function(e){sx=e.changedTouches[0].clientX},{passive:true});
+  gal.addEventListener('touchend',function(e){
+    var dx=e.changedTouches[0].clientX-sx;
+    if(Math.abs(dx)>40)showSlide(slide+(dx<0?1:-1));
+  },{passive:true});
   document.querySelectorAll('.plate[data-act]').forEach(function(el){
     el.addEventListener('click',function(){openAct(el.getAttribute('data-act'))});
     el.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();openAct(el.getAttribute('data-act'))}});
   });
   document.getElementById('act-x').addEventListener('click',closeAct);
   modal.addEventListener('click',function(e){if(e.target===modal)closeAct()});
-  document.addEventListener('keydown',function(e){if(e.key==='Escape'&&modal.classList.contains('open'))closeAct()});
+  document.addEventListener('keydown',function(e){
+    if(!modal.classList.contains('open'))return;
+    if(e.key==='Escape')closeAct();
+    else if(e.key==='ArrowLeft')showSlide(slide-1);
+    else if(e.key==='ArrowRight')showSlide(slide+1);
+  });
 })();
 </script>
 
