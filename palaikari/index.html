@@ -101,7 +101,7 @@ h2{font-family:var(--serif);font-size:clamp(26px,4.4vw,38px);color:var(--deep);l
 .plate p{font-size:15px;color:var(--mute);line-height:1.5}
 @media(max-width:720px){.plates{grid-template-columns:1fr 1fr;gap:26px 12px}}
 /* included — activity popup (tap a round plate) */
-.plate{cursor:pointer}
+.plate{cursor:pointer;-webkit-tap-highlight-color:transparent}
 .plate img{transition:transform .25s ease,box-shadow .25s ease}
 .plate:hover img,.plate:focus-visible img{transform:scale(1.06);box-shadow:0 10px 22px -8px rgba(10,37,64,.45)}
 .plate:focus-visible{outline:none}
