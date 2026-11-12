@@ -30,6 +30,8 @@
   .count{color:var(--dim);font-size:16px;margin-bottom:36px}
   .art{display:flex;align-items:center;gap:14px;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:15px 18px;margin-bottom:10px;transition:.25s;animation:up .6s cubic-bezier(.22,1,.36,1) both}
   .art:hover{border-color:var(--pink);transform:translateY(-3px)}
+  .art.featured{border-color:color-mix(in srgb, var(--lime) 55%, transparent)}
+  .art.featured:hover{border-color:var(--lime)}
   .art .no{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--dim);min-width:26px}
   .art .ttl{flex:1;font-weight:600;font-size:16.5px;line-height:1.45}
   .art .arr{color:var(--dim);font-size:17px;transition:.25s}
@@ -70,8 +72,9 @@
   <div class="dd-fab"><button class="theme-toggle" type="button" aria-label="Switch dark / light theme"><svg class="ic-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg><svg class="ic-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg></button></div>
   <div class="sec-tag">// Articles</div>
   <h1>Posts about <em>Telegram</em></h1>
-  <p class="count">33 articles</p>
+  <p class="count">34 articles</p>
   <main>
+    <a class="art featured" style="animation-delay:0ms" href="deonwrites-12-16/"><span class="ttl">DeonWrites - Channel Overview</span><span class="arr">&#8599;</span></a>
     <a class="art" style="animation-delay:35ms" href="telegram-and-telegram-x-07-09/"><span class="no">01</span><span class="ttl">Telegram ഉം Telegram X ഉം, എന്താണ് വ്യത്യാസം? ഏതാണ് മികച്ചത്?</span><span class="arr">&#8599;</span></a>
     <a class="art" style="animation-delay:70ms" href="is-telegram-complicated-01-16-2/"><span class="no">02</span><span class="ttl">ടെലഗ്രാം complicated ആണോ? വാട്സാപ്പ് പോലെ user friendly അല്ലേ?</span><span class="arr">&#8599;</span></a>
     <a class="art" style="animation-delay:105ms" href="telegram-easy-09-20/"><span class="no">03</span><span class="ttl">ടെലഗ്രാം ചാറ്റിങ്ങ് neat &amp; clean ആക്കാൻ കുറച്ചു beginners ടിപ്പുകൾ...</span><span class="arr">&#8599;</span></a>
