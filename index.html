@@ -180,38 +180,13 @@
   .contact-row .btn{display:inline-flex;align-items:center;gap:9px}
   .contact-row .btn svg{width:19px;height:19px;display:block}
   .icon-btn{display:inline-flex;align-items:center;justify-content:center;width:58px;height:58px;border-radius:50%;border:2px solid var(--ink);transition:.25s}
-  .ccards{position:relative;display:grid;grid-template-columns:1fr 1fr;gap:30px;padding:15px;max-width:1050px;margin:0 auto;text-align:left}
-  .ccard{position:relative;min-height:155px;padding:30px 30px;display:flex;align-items:center;border-radius:30px;background:linear-gradient(135deg,rgba(30,30,45,.85),rgba(10,10,18,.92));border:2px solid var(--accent);box-shadow:0 0 16px var(--glow),0 0 50px var(--glow),0 0 35px rgba(0,0,0,.45),inset 0 0 25px rgba(255,255,255,.015);backdrop-filter:blur(15px);-webkit-backdrop-filter:blur(15px);text-decoration:none;color:#fff;transition:transform .35s ease,box-shadow .35s ease;overflow:hidden}
-  .ccard::before{content:"";position:absolute;width:180px;height:180px;top:-100px;left:-80px;background:var(--accent);opacity:.12;filter:blur(35px);border-radius:50%}
-  .ccard:hover{transform:translateY(-8px) rotate(0deg) scale(1.02);box-shadow:0 0 24px var(--glow),0 0 80px var(--glow),inset 0 0 30px rgba(255,255,255,.03)}
-  .cc-icon{width:75px;height:75px;flex-shrink:0;display:flex;align-items:center;justify-content:center;margin-right:25px;position:relative;z-index:2;color:var(--accent)}
-  .cc-icon svg{width:42px;height:42px;display:block;filter:drop-shadow(0 0 8px var(--glow))}
-  .cc-text{flex:1;position:relative;z-index:2}
-  .cc-title{display:block;font-family:'Archivo',sans-serif;font-size:30px;font-weight:800;margin-bottom:7px;color:#f5f3ef}
-  .cc-sub{display:block;font-size:20px;color:#a89df2}
-  .cc-arrow{width:52px;height:52px;border-radius:16px;display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,.07);color:#fff;font-size:22px;margin-left:15px;box-shadow:inset 0 0 10px rgba(255,255,255,.04);transition:.3s;position:relative;z-index:2;flex-shrink:0}
-  .ccard:hover .cc-arrow{background:var(--accent);color:#08080f;box-shadow:0 0 18px var(--glow)}
-  .ccard.whatsapp{--accent:#20e875;--glow:rgba(32,232,117,.65);transform:rotate(-4deg)}
-  .ccard.telegram{--accent:#229cff;--glow:rgba(34,156,255,.65);transform:rotate(3deg);margin-top:25px}
-  .ccard.email{--accent:#ff414c;--glow:rgba(255,65,76,.60);grid-column:1/-1;transform:rotate(2deg);width:72%;justify-self:center}
-  .ccard.anonymous{--accent:#b76cff;--glow:rgba(183,108,255,.65);transform:rotate(-3deg);margin-top:5px}
-  .ccard.support{--accent:var(--lime);--glow:rgba(199,255,32,.7);transform:rotate(3deg);margin-top:5px;background:linear-gradient(135deg,rgba(206,232,58,.78),rgba(125,155,10,.96))}
-  .ccard.support .cc-title{color:var(--lime)}
-  .cc-spark{position:absolute;top:12px;width:26px;height:26px;z-index:3;pointer-events:none}
-  .cc-spark svg{width:100%;height:100%;display:block}
-  .cc-spark.sp-y{left:16px;color:#ffe45e;filter:drop-shadow(0 0 6px rgba(255,228,94,.8))}
-  .cc-spark.sp-p{right:16px;color:#c9a6ff;filter:drop-shadow(0 0 6px rgba(201,166,255,.8))}
-  #contact{position:relative}
-  html:not([data-theme="light"]) #contact::before{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(560px 300px at 88% 0%,rgba(145,70,255,.20),transparent 70%),radial-gradient(560px 300px at 8% 100%,rgba(145,70,255,.16),transparent 70%)}
-  @media(max-width:700px){
-    .ccards{display:flex;flex-direction:column;gap:20px;padding:5px}
-    .ccard{width:100%!important;min-height:120px;padding:22px 20px;border-radius:24px;transform:none!important;margin:0}
-    .cc-icon{width:55px;height:55px;margin-right:15px}
-    .cc-icon svg{width:32px;height:32px}
-    .cc-title{font-size:21px}
-    .cc-sub{font-size:15px}
-    .cc-arrow{width:42px;height:42px;border-radius:13px;font-size:18px}
-  }
+.rlist{max-width:430px;margin:0 auto;text-align:left}
+.rrow{display:flex;align-items:center;gap:14px;padding:15px 4px;border-bottom:1px solid var(--line);font-weight:600;font-size:16px;color:var(--ink);transition:.2s}
+.rrow:last-child{border-bottom:none}
+.rrow:hover{padding-left:9px}
+.rrow small{display:block;color:var(--dim);font-weight:400;font-size:12px}
+.rrow svg{width:23px;height:23px;flex:none}
+.rrow .arr{margin-left:auto;color:var(--dim);font-size:19px;flex:none}
   .icon-btn svg{width:25px;height:25px;display:block}
   .icon-btn:hover{transform:translateY(-3px);background:var(--ink)}
   .anon-row{margin-top:16px}
@@ -221,7 +196,7 @@
   footer .views-row .vc-num{font-size:13.5px;font-weight:500;letter-spacing:.03em}
   .coffee-overlay{position:fixed;inset:0;background:rgba(0,0,0,.65);display:none;align-items:flex-end;justify-content:center;z-index:50}
   .coffee-overlay.open{display:flex}
-  .coffee-overlay,.coffee-overlay a,.coffee-overlay button,.ccard{-webkit-tap-highlight-color:transparent}
+  .coffee-overlay,.coffee-overlay a,.coffee-overlay button,.rrow{-webkit-tap-highlight-color:transparent}
   .coffee-upi:active,.coffee-buy:active{opacity:.85}
   .coffee-popup{background:#12121a;border:1px solid #26262f;border-radius:24px 24px 0 0;width:100%;max-width:520px;padding:28px 24px 32px;position:relative;text-align:left}
   .coffee-popup h2{font-size:24px;font-weight:800;margin-bottom:8px;color:#f2f0ea}
@@ -520,12 +495,12 @@
 <section id="contact" class="big-cta">
   <div class="sec-tag reveal">// got something in mind?</div>
   <h2 class="reveal">Reach Me <em>Out!</em></h2>
-  <div class="ccards reveal">
-    <a class="ccard whatsapp" href="https://wa.me/919995376638?text=Hi%20Deon%20%F0%9F%91%8B%2C%20I%20came%20from%20your%20website%21" target="_blank" rel="noopener"><span class="cc-spark sp-y"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 2v6"/><path d="M4.5 5.5 9 10"/><path d="M19.5 5.5 15 10"/></svg></span><span class="cc-icon"><svg fill="none" stroke="currentColor" stroke-width="1.3" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>WhatsApp</title><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg></span><span class="cc-text"><span class="cc-title">WhatsApp</span><span class="cc-sub">chat with me</span></span><span class="cc-arrow">›</span></a>
-    <a class="ccard telegram" href="https://t.me/Deonnn?text=Hi%20Deon%20%F0%9F%91%8B%2C%20I%20came%20from%20your%20website%21" target="_blank" rel="noopener"><span class="cc-spark sp-p"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 2v6"/><path d="M4.5 5.5 9 10"/><path d="M19.5 5.5 15 10"/></svg></span><span class="cc-icon"><svg viewBox="0 0 24 24" role="img" xmlns="http://www.w3.org/2000/svg"><title>Telegram</title><circle cx="12" cy="12" r="12" fill="#229cff"/><path transform="translate(12.48,4.17) scale(0.62)" fill="#fff" d="m4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg></span><span class="cc-text"><span class="cc-title">Telegram</span><span class="cc-sub">chat with me</span></span><span class="cc-arrow">›</span></a>
-    <a class="ccard email" href="mailto:deepakdeon@yahoo.com"><span class="cc-icon"><svg fill="#EA4335" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>Gmail</title><path d="M24 5.457v13.909c0 .904-.732 1.636-1.636 1.636h-3.819V11.73L12 16.64l-6.545-4.91v9.273H1.636A1.636 1.636 0 0 1 0 19.366V5.457c0-2.023 2.309-3.178 3.927-1.964L5.455 4.64 12 9.548l6.545-4.91 1.528-1.145C21.69 2.28 24 3.434 24 5.457z"/></svg></span><span class="cc-text"><span class="cc-title">Email</span><span class="cc-sub">send me a mail</span></span><span class="cc-arrow">›</span></a>
-    <a class="ccard anonymous" href="https://forms.gle/ByYMNTRxcHeC2mDz5" target="_blank" rel="noopener"><span class="cc-icon"><svg fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg></span><span class="cc-text"><span class="cc-title">Anonymous Message</span><span class="cc-sub">no name needed</span></span><span class="cc-arrow">›</span></a>
-    <a class="ccard support" href="#" onclick="document.getElementById('coffeeOv').classList.add('open');return false"><span class="cc-icon"><svg fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="m11 17 2 2a1 1 0 1 0 3-3"/><path d="m14 14 2.5 2.5a1 1 0 1 0 3-3l-3.88-3.88a3 3 0 0 0-4.24 0l-.88.88a1 1 0 1 1-3-3l2.81-2.81a5.79 5.79 0 0 1 7.06-.87l.47.28a2 2 0 0 0 1.42.25L21 4"/><path d="m21 3 1 11h-2"/><path d="M3 3 2 14l6.5 6.5a1 1 0 1 0 3-3"/><path d="M3 4h8"/></svg></span><span class="cc-text"><span class="cc-title">Support my work</span></span><span class="cc-arrow">›</span></a>
+  <div class="rlist reveal">
+    <a class="rrow" href="https://wa.me/919995376638?text=Hi%20Deon%20%F0%9F%91%8B%2C%20I%20came%20from%20your%20website%21" target="_blank" rel="noopener"><svg fill="#25D366" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>WhatsApp</title><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg><span>WhatsApp<small>chat with me</small></span><span class="arr">›</span></a>
+    <a class="rrow" href="https://t.me/Deonnn?text=Hi%20Deon%20%F0%9F%91%8B%2C%20I%20came%20from%20your%20website%21" target="_blank" rel="noopener"><svg fill="#26A5E4" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>Telegram</title><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg><span>Telegram<small>chat with me</small></span><span class="arr">›</span></a>
+    <a class="rrow" href="mailto:deepakdeon@yahoo.com"><svg fill="#EA4335" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>Gmail</title><path d="M24 5.457v13.909c0 .904-.732 1.636-1.636 1.636h-3.819V11.73L12 16.64l-6.545-4.91v9.273H1.636A1.636 1.636 0 0 1 0 19.366V5.457c0-2.023 2.309-3.178 3.927-1.964L5.455 4.64 12 9.548l6.545-4.91 1.528-1.145C21.69 2.28 24 3.434 24 5.457z"/></svg><span>Email<small>send me a mail</small></span><span class="arr">›</span></a>
+    <a class="rrow" href="https://forms.gle/ByYMNTRxcHeC2mDz5" target="_blank" rel="noopener"><svg fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg><span>Anonymous Message<small>no name needed</small></span><span class="arr">›</span></a>
+    <a class="rrow" href="#" onclick="document.getElementById('coffeeOv').classList.add('open');return false"><svg fill="none" stroke="#c8f542" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="m11 17 2 2a1 1 0 1 0 3-3"/><path d="m14 14 2.5 2.5a1 1 0 1 0 3-3l-3.88-3.88a3 3 0 0 0-4.24 0l-.88.88a1 1 0 1 1-3-3l2.81-2.81a5.79 5.79 0 0 1 7.06-.87l.47.28a2 2 0 0 0 1.42.25L21 4"/><path d="m21 3 1 11h-2"/><path d="M3 3 2 14l6.5 6.5a1 1 0 1 0 3-3"/><path d="M3 4h8"/></svg><span style="color:var(--lime)">Support my work</span><span class="arr">›</span></a>
   </div>
 </section>
 
