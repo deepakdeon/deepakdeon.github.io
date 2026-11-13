@@ -65,10 +65,10 @@
   h1 .row:nth-child(2) span{animation-delay:.12s;color:transparent;-webkit-text-stroke:2px var(--ink)}
   h1 .row:nth-child(3) span{animation-delay:.24s}
   h1 .dot{color:var(--lime);-webkit-text-stroke:0}
-  h1 .row:nth-child(1) span{animation:rise 1s cubic-bezier(.22,1,.36,1) forwards, rgbShift 30s linear infinite}
-  h1 .row:nth-child(3) span{animation:rise 1s cubic-bezier(.22,1,.36,1) .24s forwards, rgbShift 30s linear infinite}
-  @keyframes rgbShift{0%{color:#ffadad}33%{color:#b5f0a8}66%{color:#a5c8ff}100%{color:#ffadad}}
-  @keyframes rgbShiftD{0%{color:#e05252}33%{color:#4da34d}66%{color:#4d7dd1}100%{color:#e05252}}
+  h1 .row:nth-child(1) span{animation:rise 1s cubic-bezier(.22,1,.36,1) forwards, rgbShift 60s linear infinite}
+  h1 .row:nth-child(3) span{animation:rise 1s cubic-bezier(.22,1,.36,1) .24s forwards, rgbShift 60s linear infinite}
+  @keyframes rgbShift{0%{color:#b5f0a8}33%{color:#a5c8ff}66%{color:#ffadad}100%{color:#b5f0a8}}
+  @keyframes rgbShiftD{0%{color:#4da34d}33%{color:#4d7dd1}66%{color:#e05252}100%{color:#4da34d}}
   html[data-theme="light"] h1 .row:nth-child(1) span, html[data-theme="light"] h1 .row:nth-child(3) span{animation-name:rise, rgbShiftD}
   @media (prefers-reduced-motion: reduce){h1 .row:nth-child(1) span, h1 .row:nth-child(3) span{animation:rise 1s cubic-bezier(.22,1,.36,1) forwards}}
   h1 .deon-svg{display:block;height:.94em;width:auto;overflow:visible;margin-left:-.04em}
