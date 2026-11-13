@@ -60,7 +60,7 @@ h1{font-size:clamp(2rem,8vw,3.5rem);margin:32px 0 12px;color:#c8f542}
 <p class="sub">You found a hidden page</p>
 <h2 class="set-title">Quiz set #10</h2>
 <section class="quiz" id="quiz">
-<div id="startScreen" style="text-align:center;padding:24px 0"><button class="btn" id="startBtn" style="margin-top:0">Start Quiz</button><div id="catPills" style="margin-top:37px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap"><button class="catpill" data-cat="MOVIE">MOVIE</button><button class="catpill" data-cat="GK">GK</button><button class="catpill" data-cat="FUN">FUN</button><button class="catpill" data-cat="SPORTS">SPORTS</button><button class="catpill" data-cat="MUSIC">MUSIC</button><button class="catpill" data-cat="TECH">TECH</button><button class="catpill" data-cat="HISTORY">HISTORY</button><button class="catpill" data-cat="FOOD">FOOD</button><button class="catpill" data-cat="SCIENCE">SCIENCE</button><button class="catpill" data-cat="MATHS">MATHS</button></div><p id="catNote" style="margin-top:12px;font-size:.9rem;min-height:1.2em;opacity:.8"></p></div>
+<div id="startScreen" style="text-align:center;padding:24px 0"><button class="btn" id="startBtn" style="margin-top:0">Start Quiz</button><div id="catPills" style="margin-top:37px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap"><button class="catpill" data-cat="FUN">FUN</button><button class="catpill" data-cat="MOVIE">MOVIE</button><button class="catpill" data-cat="GK">GK</button><button class="catpill" data-cat="SPORTS">SPORTS</button><button class="catpill" data-cat="MUSIC">MUSIC</button><button class="catpill" data-cat="TECH">TECH</button><button class="catpill" data-cat="HISTORY">HISTORY</button><button class="catpill" data-cat="FOOD">FOOD</button><button class="catpill" data-cat="SCIENCE">SCIENCE</button><button class="catpill" data-cat="MATHS">MATHS</button></div><p id="catNote" style="margin-top:12px;font-size:.9rem;min-height:1.2em;opacity:.8"></p></div>
 <div id="countdown" style="display:none;text-align:center;padding:24px 0;font-size:3rem;font-weight:700"></div>
 <div id="game" style="display:none">
 <div class="progress"><span id="prog">Question 1 / 31</span><span id="score">Score: 0</span></div>
@@ -182,8 +182,8 @@ const SETS = [
   { title: 'Quiz set #109', cat: 'MATHS', questions: [{"q": "345 ÷ 3 = ?", "options": ["115", "117", "116", "113"], "answer": 0}, {"q": "495 ÷ 3 = ?", "options": ["165", "167", "155", "163"], "answer": 0}, {"q": "444 ÷ 6 = ?", "options": ["74", "73", "75", "76"], "answer": 0}, {"q": "417 ÷ 3 = ?", "options": ["139", "149", "129", "128"], "answer": 0}, {"q": "484 ÷ 4 = ?", "options": ["121", "111", "122", "123"], "answer": 0}, {"q": "394 ÷ 2 = ?", "options": ["197", "196", "208", "207"], "answer": 0}, {"q": "114 ÷ 2 = ?", "options": ["57", "58", "67", "68"], "answer": 0}, {"q": "603 ÷ 9 = ?", "options": ["67", "66", "56", "65"], "answer": 0}, {"q": "130 ÷ 2 = ?", "options": ["65", "54", "64", "63"], "answer": 0}, {"q": "256 ÷ 2 = ?", "options": ["128", "130", "138", "139"], "answer": 0}, {"q": "362 ÷ 2 = ?", "options": ["181", "180", "171", "192"], "answer": 0}, {"q": "420 ÷ 6 = ?", "options": ["70", "68", "80", "72"], "answer": 0}] }
 ];
 function poolFor(c) { return c ? SETS.filter(s => s.cat === c) : SETS; }
-let cat = null;
-try { cat = localStorage.getItem('dd-quizcat') || null; } catch (e) {}
+let cat = 'FUN';
+try { cat = localStorage.getItem('dd-quizcat') || 'FUN'; } catch (e) {}
 let curSet = null, QUESTIONS = [], QUIZ = [];
 function pickSet() {
   const pool = poolFor(cat);
